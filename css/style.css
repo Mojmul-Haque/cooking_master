@@ -26,8 +26,21 @@ img {
 .show_recipe ul li {
     border: 1px solid #f3f3f3;
     padding: 5px 10px;
+    cursor: pointer;
 }
 
-.show_recipe ul li img {
+.show_recipe img,
+#recipe_details img {
     width: 100%;
+}
+
+#recipe_details {
+    display: flex;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 30px;
+}
+
+#recipe_details>li {
+    padding: 6px 10px;
+    border: 2px solid #f1f1f1
 }
