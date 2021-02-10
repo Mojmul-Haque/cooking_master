@@ -1,49 +1,69 @@
-let searchQuery = document.getElementById('querySearch');
-const searchBtn = document.getElementById('searhcBtn')
-const recipieDetails = document.getElementById('details')
-const searchResult = document.getElementById('recipe_container')
-
-searchBtn.addEventListener('click', function() {
-    // console.log('me')
-    // let show = document.getElementById('querySearch').value;
-    console.log(searchQuery.value)
+document.getElementById('search_btn').addEventListener('click', () => {
     foodApi()
 })
 
+
+
+
+const searchQuery = document.getElementById('querySearch').value.trim()
 const foodApi = () => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery.value}`)
-        .then(resp => resp.json())
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`)
+        .then(res => res.json())
         .then(data => generateHTML(data.meals))
 }
 
+const generateHTML = (mealList) => {
+    let html = '';
+    const mealsList = document.getElementById('result_area')
 
-const generateHTML = (object) => {
-    console.log(object)
-    let htmlCode = '';
-
-    object.map((event, index) => {
-        let show = index;
-        console.log(event)
-        const recipeName = event.strMeal
-        const recipeImge = event.strMealThumb
-
-        htmlCode += `
-                     <li onclick="myFunction()">
-                        <img src="${recipeImge}">
-                        <h4>${recipeName}</h4>
-                    </li>
+    if (mealList) {
+        mealList.map((e) => {
+            html += `<div onclick="displayDetails()" class="meal_item" id="${e.idMeal}">
+                    <div class="meal_img">
+                        <img src="${e.strMealThumb}" alt="${e.strMeal}">
+                    </div>
+                    <div class="meal_text">
+                        <h3>${e.strMeal}</h3>
+                    </div>
+                </div>
         `
-        searchResult.innerHTML = htmlCode
+
+            mealsList.innerHTML = html
 
 
 
-
-
-
-    })
-
-
-
+        })
+        mealsList.classList.remove('not-found')
+    } else {
+        html = "Your meals not found"
+        mealsList.innerHTML = html;
+        mealsList.classList.add('not-found')
+    }
 }
 
-//event handeler
+
+const displayDetails = () => {
+    console.log('clicked')
+}
+
+
+
+//meals details
+
+// const mealDetailsAPi = () => {
+//     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`)
+//         .then(res => res.json())
+//         .then(data => mealsHandeler(data.meals))
+// }
+
+// const mealsHandeler = (detailsResuls) => {
+
+//     detailsResuls.forEach(element => {
+//         const mealID = element.idMeal
+//         const ime = document.getElementById(mealID).addEventListener('click', () => {
+//             console.log('hi')
+//         })
+
+//     });
+
+// }

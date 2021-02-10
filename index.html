@@ -12,29 +12,34 @@
 
     <section>
         <div class="container">
-            <input type="text" id="querySearch">
-            <button id="searhcBtn">Search</button>
+            <div id="search_area">
+                <input type="text" id="querySearch" placeholder="Search your meals">
+                <button id="search_btn">Search</button>
 
-            <div id="details">
-                <ul id="recipe_details">
-                    <li>
+            </div>
+
+            <div id="result_area">
+                <div id="1" class="meal_item">
+                    <div class="meal_img">
                         <img src="images/1.jpg" alt="">
-                        <h4>Momo</h4>
-                        <h5>Ingdad</h5>
-                        <ul>
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="show_recipe">
-                <ul id="recipe_container"></ul>
+                    </div>
+                    <div class="meal_text">
+                        <h3>Momo</h3>
+                    </div>
+                </div>
+                <!-- <div class="meal_item">
+                    <div class="meal_img">
+                        <img src="images/1.jpg" alt="">
+                    </div>
+                    <div class="meal_text">
+                        <h3>Momo</h3>
+                    </div>
+                </div>
+            </div> -->
             </div>
 
-        </div>
     </section>
+
 
     <script src="js/main.js"></script>
 </body>
